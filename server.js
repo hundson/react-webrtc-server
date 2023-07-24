@@ -59,7 +59,7 @@ io.on("connection", (socket) => {
 
 const createCallHandler = (data, socket) => {
   const { identity } = data;
-  const callID = uuidv4();
+  const callID = uuidv4().substring(0, 4);
 
   // Creates new user
   const newUser = {
