@@ -76,7 +76,7 @@ const createCallHandler = (data, socket) => {
   const newCall = {
     id: callID,
     connectedUsers: [newUser],
-    hostUserSocketID: newUser.socketID,
+    hostUserSocketID: newUser.id,
   };
 
   // Join socket.io call
