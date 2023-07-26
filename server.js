@@ -10,6 +10,7 @@ const server = http.createServer(app);
 
 let connectedUsers = [];
 let calls = [];
+let hostUserSocketID;
 
 app.get("/api/call-exists/:callID", (req, res) => {
   const { callID } = req.params;
@@ -76,6 +77,7 @@ const createCallHandler = (data, socket) => {
   const newCall = {
     id: callID,
     connectedUsers: [newUser],
+    hostUserSocketID: socket.id,
   };
 
   // Join socket.io call
@@ -103,6 +105,9 @@ const joinCallHandler = (data, socket) => {
   // Join call as secondary user
   const call = calls.find((call) => call.id === callID);
   call.connectedUsers = [...call.connectedUsers, newUser];
+
+  // Emit Host User ID to peer
+  socket.emit("host-id", call.hostUserSocketID);
 
   // join socket.io call
   socket.join(callID);
