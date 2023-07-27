@@ -55,6 +55,10 @@ io.on("connection", (socket) => {
   socket.on("connection-init", (data) => {
     connectionInitHandler(data, socket);
   });
+
+  socket.on("swap-video", () => {
+    socket.emit("swap-video");
+  });
 });
 
 const createCallHandler = (data, socket) => {
