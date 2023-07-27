@@ -56,8 +56,8 @@ io.on("connection", (socket) => {
     connectionInitHandler(data, socket);
   });
 
-  socket.on("swap-video", () => {
-    socket.emit("swap-video");
+  socket.on("swap-video", (data) => {
+    io.to(data).emit("swap-video");
   });
 });
 
