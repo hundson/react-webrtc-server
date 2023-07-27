@@ -58,10 +58,10 @@ io.on("connection", (socket) => {
 
   socket.on("swap-video", (data) => {
     console.log("swap-video FIRING");
-    const { callID } = data;
-    console.log(callID);
+    const { tempCallID } = data;
+    console.log(tempCallID);
     console.log(data);
-    io.in(callID).emit("swap-video");
+    io.in(tempCallID).emit("swap-video");
   });
 });
 
