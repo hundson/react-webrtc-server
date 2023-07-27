@@ -60,6 +60,7 @@ io.on("connection", (socket) => {
     console.log("swap-video FIRING");
     const { callID } = data;
     console.log(callID);
+    console.log(data);
     io.in(callID).emit("swap-video");
   });
 });
