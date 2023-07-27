@@ -57,10 +57,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("swap-video", (data) => {
-    console.log("swap-video FIRING");
     const { tempCallID } = data;
-    console.log(tempCallID);
-    console.log(data);
     io.in(tempCallID).emit("swap-video");
   });
 });
