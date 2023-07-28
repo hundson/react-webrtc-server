@@ -60,6 +60,11 @@ io.on("connection", (socket) => {
     const { tempCallID } = data;
     io.in(tempCallID).emit("swap-video");
   });
+
+  socket.on("share-background", (data) => {
+    const { tempCallID } = data;
+    io.in(tempCallID).emit("share-background");
+  });
 });
 
 const createCallHandler = (data, socket) => {
