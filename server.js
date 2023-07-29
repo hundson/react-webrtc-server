@@ -61,9 +61,9 @@ io.on("connection", (socket) => {
     io.in(tempCallID).emit("swap-video");
   });
 
-  socket.on("share-background", (data) => {
+  socket.on("custom-background", (data) => {
     const { tempCallID } = data;
-    io.in(tempCallID).emit("share-background");
+    io.in(tempCallID).emit("custom-background");
   });
 });
 
