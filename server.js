@@ -72,6 +72,11 @@ io.on("connection", (socket) => {
     const { tempCallID } = data;
     io.in(tempCallID).emit("end-call");
   });
+
+  socket.on("await-feed", (data) => {
+    const { tempCallID } = data;
+    io.in(tempCallID).emit("ar-matching");
+  });
 });
 
 const createCallHandler = (data, socket) => {
