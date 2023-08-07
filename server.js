@@ -62,8 +62,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("custom-background", (data) => {
-    const { tempCallID } = data;
-    io.in(tempCallID).emit("custom-background");
+    const { tempCallID, img } = data;
+    io.in(tempCallID).emit("custom-background", img);
   });
 
   socket.on("end-call", (data) => {
