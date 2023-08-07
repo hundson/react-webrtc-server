@@ -66,9 +66,8 @@ io.on("connection", (socket) => {
 
     if (img !== null) {
       console.log(img);
+      io.in(tempCallID).emit("custom-background", img);
     }
-
-    // io.in(tempCallID).emit("custom-background", img);
   });
 
   socket.on("end-call", (data) => {
