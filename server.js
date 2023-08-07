@@ -140,7 +140,6 @@ const joinCallHandler = (data, socket) => {
 };
 
 const disconnectHandler = (socket) => {
-  console.log("DISCONNECT HANDLER");
   const user = connectedUsers.find((user) => user.socketID === socket.id);
 
   if (user) {
@@ -154,21 +153,21 @@ const disconnectHandler = (socket) => {
     // leave socket io call
     socket.leave(user.callID);
 
-    // close call if no more participants
+    // close call if a user disconnects
     if (call.connectedUsers.length > 0) {
       console.log("call.connectedUsers.length > 0");
       // Emit to remaining users that a user has disconnected
       io.to(call.id).emit("user-disconnected", { socketID: socket.id });
+      io.to(call.id).emit("end-call");
 
-      // emit to other users new connected user
-      io.to(call.id).emit("call-update", {
-        connectedUsers: call.connectedUsers,
-      });
+      // // emit to other users to update connected users
+      // io.to(call.id).emit("call-update", {
+      //   connectedUsers: call.connectedUsers,
+      // });
     } else {
       calls = calls.filter((c) => c.id !== call.id);
     }
   }
-  console.log("DISCONNECT HANDLER END");
 };
 
 const signalingHandler = (data, socket) => {
