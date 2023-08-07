@@ -31,6 +31,7 @@ const io = require("socket.io")(server, {
     origin: "*",
     methods: ["GET", "POST"],
   },
+  maxHttpBufferSize: 1e8,
 });
 
 io.on("connection", (socket) => {
