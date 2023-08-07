@@ -65,6 +65,11 @@ io.on("connection", (socket) => {
     const { tempCallID } = data;
     io.in(tempCallID).emit("custom-background");
   });
+
+  socket.on("end-call", (data) => {
+    const { tempCallID } = data;
+    io.in(tempCallID).emit("end-call");
+  });
 });
 
 const createCallHandler = (data, socket) => {
