@@ -77,6 +77,10 @@ io.on("connection", (socket) => {
     const { tempCallID } = data;
     io.in(tempCallID).emit("ar-matching");
   });
+
+  socket.on("signal-loader", () => {
+    socket.emit("signal-loader");
+  });
 });
 
 const createCallHandler = (data, socket) => {
