@@ -78,8 +78,8 @@ io.on("connection", (socket) => {
     io.in(tempCallID).emit("ar-matching");
   });
 
-  socket.on("signal-loader", () => {
-    socket.emit("signal-loader");
+  socket.on("signal-loader", (data) => {
+    io.in(tempCallID).emit("signal-loader");
   });
 });
 
