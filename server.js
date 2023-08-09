@@ -79,6 +79,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("signal-loader", (data) => {
+    const { tempCallID } = data;
     io.in(tempCallID).emit("signal-loader");
   });
 });
