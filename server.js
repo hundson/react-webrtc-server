@@ -62,6 +62,11 @@ io.on("connection", (socket) => {
     io.in(tempCallID).emit("swap-video");
   });
 
+  socket.on("reset", (data) => {
+    const { tempCallID } = data;
+    io.in(tempCallID).emit("reset");
+  });
+
   socket.on("custom-background", (data) => {
     const { tempCallID, img } = data;
     const imgFile = { img };
