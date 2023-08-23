@@ -201,10 +201,8 @@ const connectionInitHandler = (data, socket) => {
   io.to(connectedUserSocketID).emit("connection-init", initData);
 };
 
-server.listen(PORT, () => {
-  console.log(`Server is listening on ${PORT}`);
-
-  cron.schedule("5 * * * *", () => {
-    console.log("Listening");
+cron.schedule("30 0 * * * *", () => {
+  server.listen(PORT, () => {
+    console.log(`Server is listening on ${PORT}`);
   });
 });
