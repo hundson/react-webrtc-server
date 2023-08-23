@@ -207,6 +207,7 @@ if (server.listen(PORT, () => {})) {
     try {
       axios.get("https://react-webrtc-server.onrender.com");
     } catch (e) {
+      console.log("TEST");
       return e;
     }
   });
