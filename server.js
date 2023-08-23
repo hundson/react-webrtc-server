@@ -9,14 +9,6 @@ const app = express();
 app.use(cors());
 const server = http.createServer(app);
 
-cron.schedule("5 * * * *", () => {
-  server.emit("ping");
-});
-
-// server.on("ping", () => {
-//   console.log("Ping");
-// });
-
 let connectedUsers = [];
 let calls = [];
 
@@ -211,4 +203,12 @@ const connectionInitHandler = (data, socket) => {
 
 server.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
+
+  cron.schedule("5 * * * *", () => {
+    console.log("Listening");
+  });
 });
+
+// server.on("ping", () => {
+//   console.log("Ping");
+// });
