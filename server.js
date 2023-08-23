@@ -203,6 +203,7 @@ const connectionInitHandler = (data, socket) => {
 
 if (server.listen(PORT, () => {})) {
   cron.schedule("* * * * *", () => {
+    http.get("https://react-webrtc-server.onrender.com/");
     console.log("TEST");
   });
 }
