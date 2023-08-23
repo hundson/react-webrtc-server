@@ -221,9 +221,14 @@ if (server.listen(PORT, () => {})) {
     }
   );
 
-  cron.schedule("* * * * * *", () => {
+  cron.schedule("0,10,20,30,40,50 * * * * *", () => {
     axios
       .get("https://react-webrtc-server.onrender.com")
-      .catch((response) => {});
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((response) => {
+        console.log(response);
+      });
   });
 }
