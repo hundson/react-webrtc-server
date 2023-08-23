@@ -203,10 +203,10 @@ const connectionInitHandler = (data, socket) => {
 };
 
 if (server.listen(PORT, () => {})) {
-  cron.schedule("* * * * *", () => {
-    if (axios.get("https://react-webrtc-server.onrender.com")) {
-      console.log("SUCCESS");
-    }
+  cron.schedule("0,15,30,45 * * * *", () => {
+    try {
+      axios.get("https://react-webrtc-server.onrender.com");
+    } catch {}
   });
 }
 
