@@ -4,9 +4,9 @@ const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
 const cron = require("node-cron");
 
-cron.schedule("10 * * * * *", () => {
-  console.log("");
-});
+// cron.schedule("10 * * * * *", () => {
+//   console.log("");
+// });
 
 const PORT = process.env.PORT || 5000;
 const app = express();
