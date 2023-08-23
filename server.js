@@ -226,9 +226,11 @@ if (server.listen(PORT, () => {})) {
       .get("https://react-webrtc-server.onrender.com")
       .then((response) => {
         // console.log(response);
+        response = null;
       })
       .catch((response) => {
         // console.log(response);
+        response = null;
       });
   });
 }
