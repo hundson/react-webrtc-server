@@ -203,10 +203,12 @@ const connectionInitHandler = (data, socket) => {
 
 server.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
+
+  cron.schedule("30 0 * * * *", () => {
+    server.emit("ping");
+  });
 });
 
-// cron.schedule("30 0 * * * *", () => {
-//   server.listen(PORT, () => {
-//     console.log(`Server is listening on ${PORT}`);
-//   });
-// });
+server.on("ping", () => {
+  console.log(`Server is listening on ${PORT}`);
+});
