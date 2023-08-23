@@ -203,12 +203,10 @@ const connectionInitHandler = (data, socket) => {
 
 server.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
-
-  cron.schedule("30 0 * * * *", () => {
-    server.emit("ping");
-  });
 });
 
-server.on("ping", () => {
-  console.log(`Server is listening on ${PORT}`);
+cron.schedule("30 0 * * * *", () => {
+  if (http.get("https://react-webrtc-server.onrender.com/")) {
+    console.log("Success");
+  }
 });
