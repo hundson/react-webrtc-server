@@ -202,8 +202,19 @@ const connectionInitHandler = (data, socket) => {
   io.to(connectedUserSocketID).emit("connection-init", initData);
 };
 
+// if (server.listen(PORT, () => {})) {
+//   cron.schedule("0,15,30,45 * * * *", () => {
+//     try {
+//       axios.get("https://react-webrtc-server.onrender.com");
+//     } catch (e) {
+//       console.log("TEST");
+//       return e;
+//     }
+//   });
+// }
+
 if (server.listen(PORT, () => {})) {
-  cron.schedule("0,15,30,45 * * * *", () => {
+  cron.schedule("* * * * * *", () => {
     try {
       axios.get("https://react-webrtc-server.onrender.com");
     } catch (e) {
