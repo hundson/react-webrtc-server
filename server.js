@@ -204,14 +204,10 @@ const connectionInitHandler = (data, socket) => {
 
 if (server.listen(PORT, () => {})) {
   cron.schedule("0,15,30,45 * * * *", () => {
-    axios.get("https://react-webrtc-server.onrender.com");
+    try {
+      axios.get("https://react-webrtc-server.onrender.com");
+    } catch {
+      console.log("Error");
+    }
   });
 }
-
-// server.listen(PORT, () => {
-//   console.log(`Server is listening on ${PORT}`);
-// });
-
-// cron.schedule("30 0 * * * *", () => {
-//   console.log("TEST");
-// });
