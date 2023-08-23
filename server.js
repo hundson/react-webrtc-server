@@ -214,12 +214,16 @@ const connectionInitHandler = (data, socket) => {
 // }
 
 if (server.listen(PORT, () => {})) {
+  axios.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      throw error;
+    }
+  );
+
   cron.schedule("* * * * * *", () => {
     try {
       axios.get("https://react-webrtc-server.onrender.com");
-    } catch (e) {
-      console.log("TEST");
-      return e;
-    }
+    } catch {}
   });
 }
