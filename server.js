@@ -206,3 +206,5 @@ cron.schedule("30 0 * * * *", () => {
     console.log(`Server is listening on ${PORT}`);
   });
 });
+
+// TEST
