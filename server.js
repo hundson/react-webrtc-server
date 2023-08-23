@@ -208,7 +208,3 @@ server.listen(PORT, () => {
     console.log("Listening");
   });
 });
-
-// server.on("ping", () => {
-//   console.log("Ping");
-// });
