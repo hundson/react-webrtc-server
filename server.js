@@ -225,10 +225,10 @@ if (server.listen(PORT, () => {})) {
     axios
       .get("https://react-webrtc-server.onrender.com")
       .then((response) => {
-        console.log(response);
+        // console.log(response);
       })
       .catch((response) => {
-        console.log(response);
+        // console.log(response);
       });
   });
 }
