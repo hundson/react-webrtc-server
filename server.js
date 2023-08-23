@@ -9,6 +9,14 @@ const app = express();
 app.use(cors());
 const server = http.createServer(app);
 
+cron.schedule("5 * * * *", () => {
+  server.emit("ping");
+});
+
+// server.on("ping", () => {
+//   console.log("Ping");
+// });
+
 let connectedUsers = [];
 let calls = [];
 
@@ -33,14 +41,6 @@ const io = require("socket.io")(server, {
     methods: ["GET", "POST"],
   },
   maxHttpBufferSize: 2e6,
-});
-
-cron.schedule("10 0 * * * *", () => {
-  io.emit("ping");
-});
-
-io.on("ping", () => {
-  console.log("Ping");
 });
 
 io.on("connection", (socket) => {
