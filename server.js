@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
 const cron = require("node-cron");
 
-cron.schedule("14 * * * *", () => {
+cron.schedule("10 * * * * *", () => {
   console.log("");
 });
 
