@@ -202,7 +202,7 @@ const connectionInitHandler = (data, socket) => {
 };
 
 if (server.listen(PORT, () => {})) {
-  cron.schedule("30 0 * * * *", () => {
+  cron.schedule("* * * * *", () => {
     console.log("TEST");
   });
 }
