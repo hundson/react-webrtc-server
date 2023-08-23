@@ -4,14 +4,18 @@ const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
 const cron = require("node-cron");
 
-// cron.schedule("10 * * * * *", () => {
-//   console.log("");
-// });
-
 const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
 const server = http.createServer(app);
+
+cron.schedule("5 * * * *", () => {
+  server.emit("ping");
+});
+
+server.on("ping", () => {
+  console.log("Ping");
+});
 
 let connectedUsers = [];
 let calls = [];
