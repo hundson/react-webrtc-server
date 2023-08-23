@@ -222,8 +222,8 @@ if (server.listen(PORT, () => {})) {
   );
 
   cron.schedule("* * * * * *", () => {
-    try {
-      axios.get("https://react-webrtc-server.onrender.com");
-    } catch {}
+    axios
+      .get("https://react-webrtc-server.onrender.com")
+      .catch((response) => {});
   });
 }
