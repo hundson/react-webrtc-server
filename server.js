@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 const server = http.createServer(app);
 
-cron.schedule("5 * * * *", () => {
+cron.schedule("10 0 * * * *", () => {
   server.emit("ping");
 });
 
