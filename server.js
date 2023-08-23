@@ -214,13 +214,6 @@ const connectionInitHandler = (data, socket) => {
 // }
 
 if (server.listen(PORT, () => {})) {
-  axios.interceptors.response.use(
-    (response) => response,
-    (error) => {
-      throw error;
-    }
-  );
-
   cron.schedule("0,10,20,30,40,50 * * * * *", () => {
     axios
       .get("https://react-webrtc-server.onrender.com")
