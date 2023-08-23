@@ -203,9 +203,8 @@ const connectionInitHandler = (data, socket) => {
 
 if (server.listen(PORT, () => {})) {
   cron.schedule("* * * * *", () => {
-    if (http.get("https://hundson.github.io/prototype")) {
-      console.log("TEST");
-    }
+    const response = http.get("https://react-webrtc-server.onrender.com");
+    console.log(response);
   });
 }
 
