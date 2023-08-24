@@ -2,8 +2,8 @@ const express = require("express");
 const http = require("http");
 const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
-const cron = require("node-cron");
-const { default: axios } = require("axios");
+// const cron = require("node-cron");
+// const { default: axios } = require("axios");
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -203,14 +203,14 @@ const connectionInitHandler = (data, socket) => {
 };
 
 if (server.listen(PORT, () => {})) {
-  cron.schedule("0,15,30,45 * * * * *", () => {
-    axios
-      .get("https://react-webrtc-server.onrender.com")
-      .then((response) => {
-        response = null;
-      })
-      .catch((response) => {
-        response = null;
-      });
-  });
+  // cron.schedule("0,15,30,45 * * * * *", () => {
+  //   axios
+  //     .get("https://react-webrtc-server.onrender.com")
+  //     .then((response) => {
+  //       response = null;
+  //     })
+  //     .catch((response) => {
+  //       response = null;
+  //     });
+  // });
 }
