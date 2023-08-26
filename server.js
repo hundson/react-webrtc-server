@@ -59,6 +59,11 @@ io.on("connection", (socket) => {
     connectionInitHandler(data, socket);
   });
 
+  socket.on("ar-image-matcher", (data) => {
+    const { tempCallID } = data;
+    io.in(tempCallID).emit("ar-image-matcher");
+  });
+
   socket.on("swap-video", (data) => {
     const { tempCallID } = data;
     io.in(tempCallID).emit("swap-video");
